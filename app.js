@@ -4,14 +4,13 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql');
 const session = require('express-session');
-// const MySQLStore = require('express-mysql-session')(session);
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 // const mod = require(path.join(__dirname,'Controller','script.js'));
 // const db = require('./Model/database.js');
 
 const app=express();
-const port=process.env.PORT || 3000;
+const port=process.env.PORT || 8080;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
