@@ -36,8 +36,8 @@ app.use(session({
 );
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'templates', 'index.html'));
-    // res.send("Hello");
+    // res.sendFile(path.join(__dirname, 'public', 'templates', 'index.html'));
+    res.send("Hello");
 });
 
 app.get('/Loginask', (req, res) => {
