@@ -10,7 +10,7 @@ const saltRounds = 10;
 // const db = require('./Model/database.js');
 
 const app = express();
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,8 +36,8 @@ app.use(session({
 );
 
 app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname,'public','templates','index.html'));
-    res.send("Hello");
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'index.html'));
+    // res.send("Hello");
 });
 
 app.get('/Loginask', (req, res) => {
@@ -160,4 +160,4 @@ app.get('/homefarmer', (req, res) => {
 //     res.send(arr);
 // });
 
-app.listen(8080);
+app.listen(port);
