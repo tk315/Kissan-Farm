@@ -10,7 +10,7 @@ const saltRounds = 10;
 // const db = require('./Model/database.js');
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
