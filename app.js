@@ -80,6 +80,8 @@ app.post('/Checksignup', (req, res) => {
         if (err) {
             console.log(err);
         }
+        console.log(number);
+        console.log(hash);
         db.query(
             "INSERT INTO farmer (number, password) VALUES (?,?)",
             [number, hash],
@@ -88,7 +90,7 @@ app.post('/Checksignup', (req, res) => {
             }
         );
     })
-
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'login.html'));
     // if(account already exits)
     // Store it into database using bcrypt
 });
