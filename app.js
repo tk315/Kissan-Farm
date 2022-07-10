@@ -60,16 +60,25 @@ app.get('/Customerlogin', (req, res) => {
 });
 
 app.get('/uphaar', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'templates', 'signup.html'));
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'uphaar.html'));
+});
+
+app.get('/farmerBuy', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'oldinstrument.html'));
 });
 
 app.get('/Farmersell', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'templates', 'signup.html'));
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'farmersell.html'));
 });
 
 app.get('/Customerprofile', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'templates', 'signup.html'));
 });
+
+app.get('/Checkout', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'checkout.html'));
+});
+
 
 app.post('/Checksignup', (req, res) => {
 
