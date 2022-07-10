@@ -79,6 +79,10 @@ app.get('/Checkout', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'templates', 'checkout.html'));
 });
 
+app.get('/Farmerprofile', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'templates', 'customerprofile.html'));
+});
+
 
 app.post('/Checksignup', (req, res) => {
 
