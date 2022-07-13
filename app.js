@@ -52,6 +52,7 @@ app.get('/Login', (req, res) => {
 });
 
 app.get('/Signup', (req, res) => {
+
     res.sendFile(path.join(__dirname, 'public', 'templates', 'signup.html'));
 });
 
@@ -79,9 +80,20 @@ app.get('/Checkout', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'templates', 'checkout.html'));
 });
 
-// app.get('/Farmerprofile', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'public', 'templates', 'customerprofile.html'));
-// });
+app.get('/farmerlogout', (req, res) => {
+    delete req.user;
+    req.session.destroy(function (err) {
+        res.redirect('/Loginask');
+    });
+});
+
+app.get('/homefarmer', (req, res) => {
+    if (req.session.user) {
+        console.log(req.session.user.length);
+        res.sendFile(path.join(__dirname, 'public', 'templates', 'Homefarmer.html'));
+    }
+    else res.sendFile(path.join(__dirname, 'public', 'templates', 'login.html'));
+});
 
 
 app.post('/Checksignup', (req, res) => {
@@ -93,8 +105,6 @@ app.post('/Checksignup', (req, res) => {
         if (err) {
             console.log(err);
         }
-        console.log(number);
-        console.log(hash);
         db.query(
             "INSERT INTO farmer (number, password) VALUES (?,?)",
             [number, hash],
@@ -103,7 +113,8 @@ app.post('/Checksignup', (req, res) => {
             }
         );
     })
-    res.sendFile(path.join(__dirname, 'public', 'templates', 'login.html'));
+    res.redirect('/homefarmer');
+    console.log("hjkhjk");
     // if(account already exits)
     // Store it into database using bcrypt
 });
@@ -122,8 +133,9 @@ app.post('/Checklogin', (req, res) => {
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     if (response) {
                         req.session.user = result;
-                        console.log(req.session.user);
-                        res.sendFile(path.join(__dirname, 'public', 'templates', 'Homefarmer.html'));
+                        // console.log(req.session.user);
+                        res.redirect('/homefarmer');
+
                     } else {
                         res.send({ message: "Wrong phone number/password combination!" });
                     }
@@ -136,42 +148,6 @@ app.post('/Checklogin', (req, res) => {
 
 });
 
-app.get('/homefarmer', (req, res) => {
-    if (req.session.user) {
-        res.sendFile(path.join(__dirname, 'public', 'templates', 'Homefarmer.html'));
-    }
-    else res.sendFile(path.join(__dirname, 'public', 'templates', 'login.html'));
-});
 
-
-
-
-
-
-
-
-
-
-
-// app.get('/history',(req,res)=>{
-//     db.processquery();
-//     res.sendFile(path.join(__dirname,'View','history.html'));
-// });
-
-// app.get('/gethistory',(req,res)=>{
-//     let obj=db.displayquery();
-//     res.send(obj);
-// })
-
-// app.post('/api',(req,res)=>{
-//     mod.search(req.body.tagname);
-//     db.insertquery(req.body.tagname);
-//     res.sendStatus(200);
-// });
-
-// app.get('/api2',(req,res)=>{
-//     let arr=mod.getjson();
-//     res.send(arr);
-// });
 
 app.listen(port);

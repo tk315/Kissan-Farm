@@ -1,39 +1,37 @@
 <html>
-  <head>
-    <title>SignUp | Kissan Farm</title>
-    <link rel="icon" href="../static/logo.png" type="image/gif" sizes="16x16" />
-    <link rel="stylesheet" type="text/css" href="/static/signup.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  </head>
-  <body style="background-image: url(/static/img/farmerbg.jpg)">
-    <div class="login-box">
-      <img src="/static/img/avatar1.png" class="avatar" />
-      <h1>SignUp Here</h1>
-      <form onsubmit="event.preventDefault();">
-        <p>Name</p>
-        <input type="text" name="username" required/>
-        <p>Email</p>
-        <input type="email" name="email" required/>
-        <p>Password</p>
-        <input type="password" name="password" required/>
-        <p>Confirm Password</p>
-        <input type="password" name="cpassword" required/>
-        <p>Contact Number</p>
-        <input type="text" name="number" required/>
-        <input
-          type="submit"
-          style="margin-top: 10px"
-          name="submit"
-          value="Signin"
-          onclick=fun()
-        />
-        <div id = "error" style="color:red";></div>
-        Already SignUp ?
-        <a href="/Login" style="font-weight: bolder"><i>Login here</i></a>
-      </form>
-    </div>
-  </body>
-  <script>
+
+<head>
+  <title>SignUp | Kissan Farm</title>
+  <link rel="icon" href="../static/logo.png" type="image/gif" sizes="16x16" />
+  <link rel="stylesheet" type="text/css" href="/static/signup.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body style="background-image: url(/static/img/farmerbg.jpg)">
+  <div class="login-box">
+    <img src="/static/img/avatar1.png" class="avatar" />
+    <h1>SignUp Here</h1>
+    <form action="/Checksignup" method="post">
+      <p>Name</p>
+      <input type="text" name="username" required />
+      <p>Email</p>
+      <input type="email" name="email" required />
+      <p>Password</p>
+      <input type="password" name="password" required />
+      <p>Confirm Password</p>
+      <input type="password" name="cpassword" required />
+      <p>Contact Number</p>
+      <input type="text" name="number" required />
+      <input type="submit" style="margin-top: 10px" name="submit" value="Signin" onclick=fun() />
+      <div id="error" style="color:red" ;></div>
+      Already SignUp ?
+      <a href="/Login" style="font-weight: bolder"><i>Login here</i></a>
+    </form>
+  </div>
+</body>
+<!-- <script>
     function fun(){
       user_data = {
           "username": document.querySelector('input[name="username"]').value,
@@ -77,5 +75,6 @@
         async:false
         });
     }}
-  </script>
+  </script> -->
+
 </html>
